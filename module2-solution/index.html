@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="angular.min.js" defer></script>
+    <script src="app.js" defer></script>    
+  </head>
+<body>
+  <div class="container" ng-app="ShoppingListCheckOff">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6" ng-controller="ToBuyController">
+      <h2>To Buy:</h2>
+      <form ng-submit="addItem()">
+        <div class="form-group">
+          <label for="itemName">Item Name:</label>
+          <input type="text" class="form-control" id="itemName" ng-model="newItemName">
+        </div>
+        <div class="form-group">
+          <label for="itemQuantity">Item Quantity:</label>
+          <input type="number" class="form-control" id="itemQuantity" ng-model="newItemQuantity">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Item</button>
+      </form>
+      <ul>
+        <li ng-repeat="item in itemsToBuy">
+          {{item.quantity}} {{item.name}}
+          <button class="btn btn-default"
+                  ng-click="buyItem($index)">
+            Bought
+          </button>
+        </li>
+      </ul>
+      <div class="emptyMessage"
+           ng-show="itemsToBuy.length == 0">
+        Everything is bought!
+      </div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6" ng-controller="AlreadyBoughtController">
+      <h2>Already Bought:</h2>
+      <ul>
+        <li ng-repeat="item in itemsBought">
+          {{item.quantity}} {{item.name}}
+        </li>
+      </ul>
+      <div class="emptyMessage"
+           ng-show="itemsBought.length == 0">
+        Nothing bought yet.
+      </div>
+  </div>
+</div>
+
+</body>
+</html>

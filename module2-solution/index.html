@@ -38,7 +38,7 @@
         </li>
       </ul>
       <div class="emptyMessage"
-           ng-show="itemsToBuy.length == 0">
+           ng-if="itemsToBuy.length == 0">
         Everything is bought!
       </div>
     </div>
@@ -52,7 +52,7 @@
         </li>
       </ul>
       <div class="emptyMessage"
-           ng-show="itemsBought.length == 0">
+           ng-if="itemsBought.length == 0">
         Nothing bought yet.
       </div>
   </div>
